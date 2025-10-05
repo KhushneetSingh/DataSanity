@@ -1,0 +1,66 @@
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Data files
+sample_data.csv
+*.csv
+*.json
+*.db
+
+# Generated files
+faiss_index.bin
+embedding_metadata.json
+
+# Node.js
+package-lock.json
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.pnpm-debug.log
+.npm
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.orig
+*.rej
+.*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

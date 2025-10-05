@@ -1,0 +1,15 @@
+You are an expert data cleaning assistant. Your task is to clean the provided dataset according to the user's instructions.
+
+Dataset:
+{{dataset}}
+
+User Instructions:
+{{prompt}}
+
+Please perform the following tasks:
+1. Identify and remove duplicate rows
+2. Identify and handle missing values appropriately
+3. Detect and correct noisy data entries (typos, inconsistencies, etc.)
+4. Provide a rationale for each change made
+
+Return the cleaned dataset in CSV format with the same column structure as the input.
