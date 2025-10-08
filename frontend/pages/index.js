@@ -12,23 +12,33 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
       const formData = new FormData();
       formData.append('prompt', prompt);
+      console.log('Prompt entered:', prompt);
+
       if (file) {
+        console.log('File selected:', file.name);
         formData.append('file', file);
+      } else {
+        console.log('No file selected');
       }
-      
+      console.log('FormData prepared:', formData);
       const response = await fetch('/api/process', {
         method: 'POST',
         body: formData,
       });
-      
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(`Server responded with status ${response.status}`);
+      }
+
       const data = await response.json();
       setResults(data);
     } catch (error) {
       console.error('Error processing request:', error);
+      alert('An error occurred while processing the request. See console for details.');
     } finally {
       setLoading(false);
     }
@@ -44,7 +54,7 @@ export default function Home() {
 
       <main className="container mx-auto py-8">
         <h1 className="text-3xl font-bold text-center mb-8">DataSanity</h1>
-        
+
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -58,9 +68,10 @@ export default function Home() {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 rows={4}
+                required
               />
             </div>
-            
+
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="file">
                 Upload CSV Dataset (Optional)
@@ -70,14 +81,19 @@ export default function Home() {
                 id="file"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 accept=".csv"
-                onChange={(e) => setFile(e.target.files[0])}
+                onChange={(e) => {
+                  setFile(e.target.files[0]);
+                  console.log('Selected file:', e.target.files[0]);
+                }}
               />
             </div>
-            
+
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className={`${
+                  loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-700'
+                } text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
                 disabled={loading}
               >
                 {loading ? 'Processing...' : 'Process Data'}
@@ -85,16 +101,16 @@ export default function Home() {
             </div>
           </form>
         </div>
-        
+
         {results && (
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-bold mb-4">Results</h2>
-            
-            <DataTable data={results.cleanedData} title="Cleaned Data" />
-            <DataTable data={results.generatedData} title="Generated Data" />
-            <DataTable data={results.vectorizedData} title="Vectorized Data" />
-            <DataTable data={results.enrichedData} title="Enriched Data" />
-            
+
+            {results.cleanedData && <DataTable data={results.cleanedData} title="Cleaned Data" />}
+            {results.generatedData && <DataTable data={results.generatedData} title="Generated Data" />}
+            {results.vectorizedData && <DataTable data={results.vectorizedData} title="Vectorized Data" />}
+            {results.enrichedData && <DataTable data={results.enrichedData} title="Enriched Data" />}
+
             <DownloadButtons />
           </div>
         )}
