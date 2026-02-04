@@ -15,13 +15,14 @@ faiss_index.bin
 embedding_metadata.json
 
 # Node.js
-package-lock.json
 node_modules/
 npm-debug.log
 yarn-error.log
 yarn-debug.log
 .pnpm-debug.log
 .npm
+.next/
+out/
 
 # Python
 __pycache__/
