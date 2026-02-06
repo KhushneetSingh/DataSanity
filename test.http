@@ -1,0 +1,12 @@
+### Sample GET Request
+GET https://jsonplaceholder.typicode.com/posts/1
+
+### Sample POST Request
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+    "title": "Sample Post",
+    "body": "This is a test post",
+    "userId": 1
+}
