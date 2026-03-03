@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import Optional
 import os
-from cerebras_client import cerebras_client
+from openrouter_client import openrouter_client
 
 def clean_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     """
@@ -33,10 +33,10 @@ def clean_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     filled_prompt = filled_prompt.replace("{{prompt}}", prompt)
     
     # Call Cerebras API for intelligent cleaning
-    api_response = cerebras_client.generate(filled_prompt, max_tokens=1024)
+    api_response = openrouter_client.generate(filled_prompt, max_tokens=1024)
     
     if api_response["success"]:
-        result = f"Data cleaning completed using Cerebras API:\n"
+        result = f"Data cleaning completed using OpenRouter API:\n"
         result += f"- Initial rows: {initial_rows}\n"
         result += f"- Removed duplicates: {removed_duplicates}\n"
         result += f"- Removed rows with missing values: {removed_missing}\n"
@@ -45,7 +45,7 @@ def clean_data(df: Optional[pd.DataFrame], prompt: str) -> str:
         result += f"Cleaned data:\n{api_response['data']}"
     else:
         # Fallback to basic cleaning if API fails
-        result = f"Data cleaning completed (API call failed, using basic cleaning):\n"
+        result = f"Data cleaning completed (OpenRouter API call failed, using basic cleaning):\n"
         result += f"- Initial rows: {initial_rows}\n"
         result += f"- Removed duplicates: {removed_duplicates}\n"
         result += f"- Removed rows with missing values: {removed_missing}\n"

@@ -2,7 +2,7 @@ import pandas as pd
 from typing import Optional
 import httpx
 import os
-from cerebras_client import cerebras_client
+from openrouter_client import openrouter_client
 
 def enrich_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     """
@@ -25,7 +25,7 @@ def enrich_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     filled_prompt = filled_prompt.replace("{{prompt}}", prompt)
     
     # Call Cerebras API to identify fields to enrich
-    api_response = cerebras_client.generate(filled_prompt, max_tokens=512)
+    api_response = openrouter_client.generate(filled_prompt, max_tokens=512)
     
     # For this MVP, we'll simulate web search results
     # In a real implementation, you would call Brave API:
@@ -43,9 +43,9 @@ def enrich_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     result += f"- Enriched fields: {list(df.columns)}\n\n"
     
     if api_response["success"]:
-        result += f"Enrichment summary from Cerebras API:\n{api_response['response']}\n\n"
+        result += f"Enrichment summary from OpenRouter API:\n{api_response['response']}\n\n"
     else:
-        result += f"Note: Cerebras API call failed\n"
+        result += f"Note: OpenRouter API call failed\n"
         result += f"Error: {api_response['error']}\n\n"
     
     # Add example enriched data

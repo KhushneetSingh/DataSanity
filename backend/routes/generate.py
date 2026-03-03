@@ -1,6 +1,6 @@
 import re
 import os
-from cerebras_client import cerebras_client
+from openrouter_client import openrouter_client
 
 def generate_data(prompt: str) -> str:
     """
@@ -26,16 +26,16 @@ def generate_data(prompt: str) -> str:
     filled_prompt = template.replace("{{prompt}}", prompt)
     
     # Call Cerebras API for data generation
-    api_response = cerebras_client.generate(filled_prompt, max_tokens=1024)
+    api_response = openrouter_client.generate(filled_prompt, max_tokens=1024)
     
     if api_response["success"]:
-        result = f"Data generation completed using Cerebras API:\n"
+        result = f"Data generation completed using OpenRouter API:\n"
         result += f"- Requested examples: {count}\n"
         result += f"- Noise requested: {noise_requested}\n\n"
         result += f"Generated data:\n{api_response['data']}"
     else:
         # Fallback to basic generation if API fails
-        result = f"Data generation completed (API call failed, using basic generation):\n"
+        result = f"Data generation completed (OpenRouter API call failed, using basic generation):\n"
         result += f"- Requested examples: {count}\n"
         result += f"- Noise requested: {noise_requested}\n"
         result += f"- Error: {api_response['error']}\n\n"
