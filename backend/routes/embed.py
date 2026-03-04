@@ -5,7 +5,7 @@ import faiss
 from sentence_transformers import SentenceTransformer
 import json
 import os
-from cerebras_client import cerebras_client
+from openrouter_client import openrouter_client
 
 def vectorize_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     """
@@ -66,7 +66,7 @@ def vectorize_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     filled_prompt = filled_prompt.replace("{{prompt}}", prompt)
     
     # Call Cerebras API for intelligent vectorization
-    api_response = cerebras_client.generate(filled_prompt, max_tokens=512)
+    api_response = openrouter_client.generate(filled_prompt, max_tokens=512)
     
     result = f"Data vectorization completed:\n"
     result += f"- Dataset shape: {df.shape}\n"
@@ -78,9 +78,9 @@ def vectorize_data(df: Optional[pd.DataFrame], prompt: str) -> str:
     result += f"- Metadata saved to: embedding_metadata.json\n\n"
     
     if api_response["success"]:
-        result += f"Vectorization summary from Cerebras API:\n{api_response['response']}\n\n"
+        result += f"Vectorization summary from OpenRouter API:\n{api_response['response']}\n\n"
     else:
-        result += f"Note: Cerebras API call failed, using default vectorization\n"
+        result += f"Note: OpenRouter API call failed, using default vectorization\n"
         result += f"Error: {api_response['error']}\n\n"
     
     # Show sample embeddings
