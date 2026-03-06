@@ -9,7 +9,7 @@ class OpenRouterClient:
         self.api_key = api_key or os.getenv("OPENROUTER_API_KEY", "")
         self.base_url = "https://openrouter.ai/api/v1"
         # Free model available on OpenRouter (no credits required)
-        self.model = "mistralai/mistral-7b-instruct:free"
+        self.model = "meta-llama/llama-3.2-3b-instruct:free"
 
     def generate(self, prompt: str, max_tokens: int = 512) -> Dict[str, Any]:
         """
