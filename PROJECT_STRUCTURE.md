@@ -22,7 +22,7 @@ DataSanity/
 └── backend/
     ├── requirements.txt
     ├── main.py
-    ├── cerebras_client.py
+    ├── openrouter_client.py
     ├── routes/
     │   ├── clean.py
     │   ├── generate.py
@@ -61,7 +61,7 @@ DataSanity/
 - `main.py`: Main FastAPI application file
 
 ### Core Modules
-- `cerebras_client.py`: Client for interacting with Cerebras API
+- `openrouter_client.py`: Client for interacting with OpenRouter API
 
 ### Routes
 - `routes/clean.py`: Data cleaning functionality
@@ -81,7 +81,7 @@ DataSanity/
 1. User interacts with frontend via natural language prompt
 2. Frontend sends request to backend `/api/process` endpoint
 3. Backend parses prompt to determine required actions
-4. Backend routes process data using Cerebras API and other tools
+4. Backend routes process data using OpenRouter API and other tools
 5. Results are returned to frontend for display
 6. User can download processed data using download buttons
 

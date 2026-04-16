@@ -15,7 +15,7 @@ DataSanity is an AI-powered web application for dataset cleaning, synthetic data
 
 - Frontend: Next.js with Tailwind CSS
 - Backend: FastAPI (Python)
-- LLM Inference: Cerebras API
+- LLM Inference: OpenRouter API
 - Data Processing: pandas, numpy
 - Embedding: sentence-transformers
 - Vector Store: FAISS
