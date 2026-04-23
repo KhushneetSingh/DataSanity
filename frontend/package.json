@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "formidable": "^3.5.4",
-    "next": "^14.2.33",
+    "next": "^16.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
