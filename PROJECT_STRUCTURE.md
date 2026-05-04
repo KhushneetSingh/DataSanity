@@ -39,31 +39,38 @@ DataSanity/
 ## Frontend Structure
 
 ### Configuration Files
+
 - `package.json`: Project dependencies and scripts
 - `next.config.js`: Next.js configuration
 - `postcss.config.js`: PostCSS configuration for Tailwind CSS
 - `tailwind.config.js`: Tailwind CSS configuration
 
 ### Pages
+
 - `pages/index.js`: Main application page with user interface
 
 ### Components
+
 - `components/DataTable.js`: Component for displaying data in table format
 - `components/DownloadButtons.js`: Component with buttons for downloading processed data
 
 ### Public Assets
+
 - `public/favicon.ico`: Application favicon
 
 ## Backend Structure
 
 ### Configuration Files
+
 - `requirements.txt`: Python dependencies
 - `main.py`: Main FastAPI application file
 
 ### Core Modules
+
 - `openrouter_client.py`: Client for interacting with OpenRouter API
 
 ### Routes
+
 - `routes/clean.py`: Data cleaning functionality
 - `routes/generate.py`: Synthetic data generation functionality
 - `routes/embed.py`: Data vectorization functionality
@@ -71,6 +78,7 @@ DataSanity/
 - `routes/download.py`: File download handlers
 
 ### Prompts
+
 - `prompts/clean_template.txt`: Prompt template for data cleaning tasks
 - `prompts/generate_template.txt`: Prompt template for data generation tasks
 - `prompts/embed_template.txt`: Prompt template for data vectorization tasks
@@ -88,26 +96,31 @@ DataSanity/
 ## Key Features Implementation
 
 ### Dataset Cleaning
+
 - Implemented in `backend/routes/clean.py`
 - Uses `backend/prompts/clean_template.txt` for LLM instructions
 - Basic preprocessing done before sending to LLM
 
 ### Fake Data Generation
+
 - Implemented in `backend/routes/generate.py`
 - Uses `backend/prompts/generate_template.txt` for LLM instructions
 - Parses prompt to determine number and type of examples
 
 ### Vectorization for RAG
+
 - Implemented in `backend/routes/embed.py`
 - Uses sentence-transformers library for embedding generation
 - Creates FAISS index for efficient similarity search
 
 ### Data Enrichment
+
 - Implemented in `backend/routes/enrich.py`
 - Uses web search APIs (Brave or Serper.dev) for enrichment
 - Uses `backend/prompts/enrich_template.txt` for LLM instructions
 
 ### Download Handlers
+
 - Implemented in `backend/routes/download.py`
 - Provides endpoints for downloading data in various formats
 - Supports CSV, JSON, and FAISS index downloads
