@@ -1,0 +1,12 @@
+import { Topbar } from "@/components/layout/Topbar"
+
+export default function HistoryPage() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Topbar />
+      <div className="flex items-center justify-center h-64 text-[#555] text-sm">
+        History — coming in Phase 3
+      </div>
+    </div>
+  )
+}
