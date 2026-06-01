@@ -92,5 +92,5 @@
 - **Data Tools**: pandas, numpy, pyarrow
 - **Embedding**: sentence-transformers (all-MiniLM-L6-v2)
 - **Vector Store**: FAISS
-- **Web Search API**: Exa or Serper.dev
+- **Web Search API**: Exa and Serper.dev as fallback
 - **Storage**: SQLite for temp + local filesystem (CSV/JSON/FAISS)
