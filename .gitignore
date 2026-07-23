@@ -5,6 +5,7 @@
 venv/
 sample_data.csv
 stash.txt
+backend/uploads/
 
 # =====================
 # Python
